@@ -1,5 +1,9 @@
 import type { VbenButtonProps } from '@vben-core/shadcn-ui';
+<<<<<<< HEAD
 import type { Field, FormContext, GenericObject } from 'vee-validate';
+=======
+import type { FieldOptions, FormContext, GenericObject } from 'vee-validate';
+>>>>>>> target
 import type { ZodTypeAny } from 'zod';
 
 import type { FormApi } from './form-api';
@@ -33,6 +37,18 @@ export type FormItemClassType =
   | (Record<never, never> & string)
   | WrapperClassType;
 
+<<<<<<< HEAD
+=======
+export type FormFieldOptions = Partial<
+  {
+    validateOnBlur?: boolean;
+    validateOnChange?: boolean;
+    validateOnInput?: boolean;
+    validateOnModelUpdate?: boolean;
+  } & FieldOptions
+>;
+
+>>>>>>> target
 export interface FormShape {
   /** 默认值 */
   default?: any;
@@ -140,10 +156,26 @@ export interface FormCommonConfig {
    */
   disabled?: boolean;
   /**
+<<<<<<< HEAD
    * 所有表单项的控件样式
    * @default {}
    */
   formFieldProps?: Partial<typeof Field>;
+=======
+   * 是否禁用所有表单项的change事件监听
+   * @default false
+   */
+  disabledOnChangeListener?: boolean;
+  /**
+   * 所有表单项的空状态值,默认都是undefined，naive-ui的空状态值是null
+   */
+  emptyStateValue?: null | undefined;
+  /**
+   * 所有表单项的控件样式
+   * @default {}
+   */
+  formFieldProps?: FormFieldOptions;
+>>>>>>> target
   /**
    * 所有表单项的栅格布局
    * @default ""
@@ -231,6 +263,14 @@ export interface FormRenderProps<
    */
   collapsedRows?: number;
   /**
+<<<<<<< HEAD
+=======
+   * 是否触发resize事件
+   * @default false
+   */
+  collapseTriggerResize?: boolean;
+  /**
+>>>>>>> target
    * 表单项通用后备配置，当子项目没配置时使用这里的配置，子项目配置优先级高于此配置
    */
   commonConfig?: FormCommonConfig;
@@ -266,8 +306,13 @@ export interface FormRenderProps<
 }
 
 export interface ActionButtonOptions extends VbenButtonProps {
+<<<<<<< HEAD
   show?: boolean;
   text?: string;
+=======
+  content?: string;
+  show?: boolean;
+>>>>>>> target
 }
 
 export interface VbenFormProps<
@@ -289,6 +334,13 @@ export interface VbenFormProps<
    */
   handleSubmit?: HandleSubmitFn;
   /**
+<<<<<<< HEAD
+=======
+   * 表单值变化回调
+   */
+  handleValuesChange?: (values: Record<string, any>) => void;
+  /**
+>>>>>>> target
    * 重置按钮参数
    */
   resetButtonOptions?: ActionButtonOptions;
@@ -317,6 +369,11 @@ export interface VbenFormAdapterOptions<
   components: Partial<Record<T, Component>>;
   config?: {
     baseModelPropName?: string;
+<<<<<<< HEAD
+=======
+    disabledOnChangeListener?: boolean;
+    emptyStateValue?: null | undefined;
+>>>>>>> target
     modelPropNameMap?: Partial<Record<T, string>>;
   };
   defineRules?: {

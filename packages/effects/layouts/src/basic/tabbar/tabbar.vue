@@ -5,12 +5,16 @@ import { useRoute } from 'vue-router';
 import { useContentMaximize, useTabs } from '@vben/hooks';
 import { preferences } from '@vben/preferences';
 import { useTabbarStore } from '@vben/stores';
+<<<<<<< HEAD
 import {
   TabsToolMore,
   TabsToolRefresh,
   TabsToolScreen,
   TabsView,
 } from '@vben-core/tabs-ui';
+=======
+import { TabsToolMore, TabsToolScreen, TabsView } from '@vben-core/tabs-ui';
+>>>>>>> target
 
 import { useTabbar } from './use-tabbar';
 
@@ -23,7 +27,11 @@ defineProps<{ showIcon?: boolean; theme?: string }>();
 const route = useRoute();
 const tabbarStore = useTabbarStore();
 const { contentIsMaximize, toggleMaximize } = useContentMaximize();
+<<<<<<< HEAD
 const { refreshTab, unpinTab } = useTabs();
+=======
+const { unpinTab } = useTabs();
+>>>>>>> target
 
 const {
   createContextMenus,
@@ -66,10 +74,13 @@ if (!preferences.tabbar.persist) {
     @update:active="handleClick"
   />
   <div class="flex-center h-full">
+<<<<<<< HEAD
     <TabsToolRefresh
       v-if="preferences.tabbar.showRefresh"
       @refresh="refreshTab"
     />
+=======
+>>>>>>> target
     <TabsToolMore v-if="preferences.tabbar.showMore" :menus="menus" />
     <TabsToolScreen
       v-if="preferences.tabbar.showMaximize"

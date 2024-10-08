@@ -12,13 +12,19 @@ import { toRaw } from 'vue';
 import { Store } from '@vben-core/shared/store';
 import {
   bindMethods,
+<<<<<<< HEAD
   createMerge,
   isFunction,
+=======
+  isFunction,
+  mergeWithArrayOverride,
+>>>>>>> target
   StateHandler,
 } from '@vben-core/shared/utils';
 
 import { objectPick } from '@vueuse/core';
 
+<<<<<<< HEAD
 const merge = createMerge((originObj, key, updates) => {
   if (Array.isArray(originObj[key]) && Array.isArray(updates)) {
     originObj[key] = updates;
@@ -26,14 +32,24 @@ const merge = createMerge((originObj, key, updates) => {
   }
 });
 
+=======
+>>>>>>> target
 function getDefaultState(): VbenFormProps {
   return {
     actionWrapperClass: '',
     collapsed: false,
     collapsedRows: 1,
+<<<<<<< HEAD
     commonConfig: {},
     handleReset: undefined,
     handleSubmit: undefined,
+=======
+    collapseTriggerResize: false,
+    commonConfig: {},
+    handleReset: undefined,
+    handleSubmit: undefined,
+    handleValuesChange: undefined,
+>>>>>>> target
     layout: 'horizontal',
     resetButtonOptions: {},
     schema: [],
@@ -218,10 +234,17 @@ export class FormApi {
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState((prev) => {
+<<<<<<< HEAD
         return merge(stateOrFn(prev), prev);
       });
     } else {
       this.store.setState((prev) => merge(stateOrFn, prev));
+=======
+        return mergeWithArrayOverride(stateOrFn(prev), prev);
+      });
+    } else {
+      this.store.setState((prev) => mergeWithArrayOverride(stateOrFn, prev));
+>>>>>>> target
     }
   }
 
@@ -256,7 +279,11 @@ export class FormApi {
     return rawValues;
   }
 
+<<<<<<< HEAD
   unmounted() {
+=======
+  unmount() {
+>>>>>>> target
     // this.state = null;
     this.isMounted = false;
     this.stateHandler.reset();
@@ -287,7 +314,14 @@ export class FormApi {
     currentSchema.forEach((schema, index) => {
       const updatedData = updatedMap[schema.fieldName];
       if (updatedData) {
+<<<<<<< HEAD
         currentSchema[index] = merge(updatedData, schema) as FormSchema;
+=======
+        currentSchema[index] = mergeWithArrayOverride(
+          updatedData,
+          schema,
+        ) as FormSchema;
+>>>>>>> target
       }
     });
     this.setState({ schema: currentSchema });

@@ -1,24 +1,80 @@
 <script setup lang="ts">
+<<<<<<< HEAD
+=======
+import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue';
+
+>>>>>>> target
 interface Props {
   title?: string;
   description?: string;
   contentClass?: string;
+<<<<<<< HEAD
   showFooter?: boolean;
+=======
+  /**
+   * 根据content可见高度自适应
+   */
+  autoContentHeight?: boolean;
+>>>>>>> target
 }
 
 defineOptions({
   name: 'Page',
 });
 
+<<<<<<< HEAD
 const props = withDefaults(defineProps<Props>(), {
   contentClass: '',
   description: '',
   showFooter: false,
   title: '',
+=======
+const {
+  contentClass = '',
+  description = '',
+  autoContentHeight = false,
+  title = '',
+} = defineProps<Props>();
+
+const headerHeight = ref(0);
+const footerHeight = ref(0);
+const shouldAutoHeight = ref(false);
+
+const headerRef = useTemplateRef<HTMLDivElement>('headerRef');
+const footerRef = useTemplateRef<HTMLDivElement>('footerRef');
+
+const contentStyle = computed(() => {
+  if (autoContentHeight) {
+    return {
+      height: shouldAutoHeight.value
+        ? `calc(var(--vben-content-height) - ${headerHeight.value}px - ${footerHeight.value}px)`
+        : '0',
+      // 'overflow-y': shouldAutoHeight.value?'auto':'unset',
+    };
+  }
+  return {};
+});
+
+async function calcContentHeight() {
+  if (!autoContentHeight) {
+    return;
+  }
+  await nextTick();
+  headerHeight.value = headerRef.value?.offsetHeight || 0;
+  footerHeight.value = footerRef.value?.offsetHeight || 0;
+  setTimeout(() => {
+    shouldAutoHeight.value = true;
+  }, 30);
+}
+
+onMounted(() => {
+  calcContentHeight();
+>>>>>>> target
 });
 </script>
 
 <template>
+<<<<<<< HEAD
   <div class="relative h-full">
     <div
       v-if="description || $slots.description || title"
@@ -32,6 +88,23 @@ const props = withDefaults(defineProps<Props>(), {
           {{ title }}
 
           <slot name="extra"></slot>
+=======
+  <div class="relative">
+    <div
+      v-if="
+        description ||
+        $slots.description ||
+        title ||
+        $slots.title ||
+        $slots.extra
+      "
+      ref="headerRef"
+      class="bg-card relative px-6 py-4"
+    >
+      <slot name="title">
+        <div v-if="title" class="mb-2 flex text-lg font-semibold">
+          {{ title }}
+>>>>>>> target
         </div>
       </slot>
 
@@ -40,14 +113,29 @@ const props = withDefaults(defineProps<Props>(), {
           {{ description }}
         </p>
       </slot>
+<<<<<<< HEAD
     </div>
 
     <div :class="contentClass" class="m-4">
+=======
+
+      <div v-if="$slots.extra" class="absolute bottom-4 right-4">
+        <slot name="extra"></slot>
+      </div>
+    </div>
+
+    <div :class="contentClass" :style="contentStyle" class="h-full p-4">
+>>>>>>> target
       <slot></slot>
     </div>
 
     <div
+<<<<<<< HEAD
       v-if="props.showFooter"
+=======
+      v-if="$slots.footer"
+      ref="footerRef"
+>>>>>>> target
       class="bg-card align-center absolute bottom-0 left-0 right-0 flex px-6 py-4"
     >
       <slot name="footer"></slot>

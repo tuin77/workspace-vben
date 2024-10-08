@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import type { DrawerProps, ExtendedDrawerApi } from './drawer';
 
+<<<<<<< HEAD
 import { ref, watch } from 'vue';
+=======
+import { provide, ref, useId, watch } from 'vue';
+>>>>>>> target
 
 import {
   useIsMobile,
@@ -33,9 +37,19 @@ const props = withDefaults(defineProps<Props>(), {
   drawerApi: undefined,
 });
 
+<<<<<<< HEAD
 const wrapperRef = ref<HTMLElement>();
 const { $t } = useSimpleLocale();
 const { isMobile } = useIsMobile();
+=======
+const id = useId();
+provide('DISMISSABLE_DRAWER_ID', id);
+
+const wrapperRef = ref<HTMLElement>();
+const { $t } = useSimpleLocale();
+const { isMobile } = useIsMobile();
+
+>>>>>>> target
 const state = props.drawerApi?.useStore?.();
 
 const {
@@ -83,8 +97,13 @@ function escapeKeyDown(e: KeyboardEvent) {
 // pointer-down-outside
 function pointerDownOutside(e: Event) {
   const target = e.target as HTMLElement;
+<<<<<<< HEAD
   const dismissableDrawer = !!target?.dataset.dismissableDrawer;
   if (!closeOnClickModal.value || !dismissableDrawer) {
+=======
+  const dismissableDrawer = target?.dataset.dismissableDrawer;
+  if (!closeOnClickModal.value || dismissableDrawer !== id) {
+>>>>>>> target
     e.preventDefault();
   }
 }

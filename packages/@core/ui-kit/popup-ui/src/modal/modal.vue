@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import type { ExtendedModalApi, ModalProps } from './modal';
 
+<<<<<<< HEAD
 import { computed, nextTick, ref, watch } from 'vue';
+=======
+import { computed, nextTick, provide, ref, useId, watch } from 'vue';
+>>>>>>> target
 
 import {
   useIsMobile,
@@ -40,6 +44,13 @@ const dialogRef = ref();
 const headerRef = ref();
 const footerRef = ref();
 
+<<<<<<< HEAD
+=======
+const id = useId();
+
+provide('DISMISSABLE_MODAL_ID', id);
+
+>>>>>>> target
 const { $t } = useSimpleLocale();
 const { isMobile } = useIsMobile();
 const state = props.modalApi?.useStore?.();
@@ -141,8 +152,13 @@ function handerOpenAutoFocus(e: Event) {
 // pointer-down-outside
 function pointerDownOutside(e: Event) {
   const target = e.target as HTMLElement;
+<<<<<<< HEAD
   const isDismissableModal = !!target?.dataset.dismissableModal;
   if (!closeOnClickModal.value || !isDismissableModal) {
+=======
+  const isDismissableModal = target?.dataset.dismissableModal;
+  if (!closeOnClickModal.value || isDismissableModal !== id) {
+>>>>>>> target
     e.preventDefault();
     e.stopPropagation();
   }

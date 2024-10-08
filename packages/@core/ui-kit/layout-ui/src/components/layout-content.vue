@@ -4,7 +4,11 @@ import type { ContentCompactType } from '@vben-core/typings';
 import type { CSSProperties } from 'vue';
 import { computed } from 'vue';
 
+<<<<<<< HEAD
 import { useContentStyle } from '@vben-core/composables';
+=======
+import { useLayoutContentStyle } from '@vben-core/composables';
+>>>>>>> target
 import { Slot } from '@vben-core/shadcn-ui';
 
 interface Props {
@@ -25,7 +29,11 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {});
 
+<<<<<<< HEAD
 const { contentElement, overlayStyle } = useContentStyle();
+=======
+const { contentElement, overlayStyle } = useLayoutContentStyle();
+>>>>>>> target
 
 const style = computed((): CSSProperties => {
   const {

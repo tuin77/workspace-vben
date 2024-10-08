@@ -67,10 +67,14 @@ interface AuthenticationProps {
   submitButtonText?: string;
 }
 
+<<<<<<< HEAD
 interface LoginAndRegisterParams {
   password: string;
   username: string;
 }
+=======
+type LoginAndRegisterParams = Record<string, any>;
+>>>>>>> target
 
 interface LoginCodeParams {
   code: string;

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import type { BaseFormComponentType, VbenFormAdapterOptions } from './types';
+=======
+import type {
+  BaseFormComponentType,
+  FormCommonConfig,
+  VbenFormAdapterOptions,
+} from './types';
+>>>>>>> target
 
 import type { Component } from 'vue';
 import { h } from 'vue';
@@ -16,6 +24,11 @@ import { defineRule } from 'vee-validate';
 
 const DEFAULT_MODEL_PROP_NAME = 'modelValue';
 
+<<<<<<< HEAD
+=======
+export const DEFAULT_FORM_COMMON_CONFIG: FormCommonConfig = {};
+
+>>>>>>> target
 export const COMPONENT_MAP: Record<BaseFormComponentType, Component> = {
   DefaultResetActionButton: h(VbenButton, { size: 'sm', variant: 'outline' }),
   DefaultSubmitActionButton: h(VbenButton, { size: 'sm', variant: 'default' }),
@@ -37,6 +50,17 @@ export function setupVbenForm<
 >(options: VbenFormAdapterOptions<T>) {
   const { components, config, defineRules } = options;
 
+<<<<<<< HEAD
+=======
+  const { disabledOnChangeListener = false, emptyStateValue = undefined } =
+    (config || {}) as FormCommonConfig;
+
+  Object.assign(DEFAULT_FORM_COMMON_CONFIG, {
+    disabledOnChangeListener,
+    emptyStateValue,
+  });
+
+>>>>>>> target
   if (defineRules) {
     for (const key of Object.keys(defineRules)) {
       defineRule(key, defineRules[key as never]);

@@ -1,5 +1,9 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import { computed } from 'vue';
+=======
+import { computed, watch } from 'vue';
+>>>>>>> target
 
 import { cn } from '@vben-core/shared/utils';
 
@@ -32,10 +36,20 @@ const {
   showRowsPerPage = true,
   showTotalText = true,
   siblingCount = 1,
+<<<<<<< HEAD
   size = 'default',
   total = 500,
 } = defineProps<Props>();
 
+=======
+  size = 'small',
+  total = 500,
+} = defineProps<Props>();
+
+const emit = defineEmits<{
+  pageChange: [currentPage: number, pageSize: number];
+}>();
+>>>>>>> target
 const currentPage = defineModel<number>('currentPage', { default: 1 });
 const itemPerPage = defineModel<number>('itemPerPage', { default: 20 });
 
@@ -53,6 +67,16 @@ const options = computed(() => {
 function handleUpdateModelValue(value: string) {
   itemPerPage.value = Number(value);
 }
+<<<<<<< HEAD
+=======
+
+watch(
+  [() => itemPerPage.value, () => currentPage.value],
+  ([itemPerPage, currentPage]) => {
+    emit('pageChange', currentPage, itemPerPage);
+  },
+);
+>>>>>>> target
 </script>
 
 <template>

@@ -1,12 +1,25 @@
 <script setup lang="ts">
 import type { ZodTypeAny } from 'zod';
 
+<<<<<<< HEAD
 import type { FormRenderProps, FormSchema, FormShape } from '../types';
+=======
+import type {
+  FormCommonConfig,
+  FormRenderProps,
+  FormSchema,
+  FormShape,
+} from '../types';
+>>>>>>> target
 
 import { computed } from 'vue';
 
 import { Form } from '@vben-core/shadcn-ui';
+<<<<<<< HEAD
 import { cn, isString } from '@vben-core/shared/utils';
+=======
+import { cn, isString, mergeWithArrayOverride } from '@vben-core/shared/utils';
+>>>>>>> target
 
 import { type GenericObject } from 'vee-validate';
 
@@ -17,12 +30,25 @@ import { getBaseRules, getDefaultValueInZodStack } from './helper';
 
 interface Props extends FormRenderProps {}
 
+<<<<<<< HEAD
 const props = withDefaults(defineProps<Props>(), {
   collapsedRows: 1,
   commonConfig: () => ({}),
   showCollapseButton: false,
   wrapperClass: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3',
 });
+=======
+const props = withDefaults(
+  defineProps<{ globalCommonConfig?: FormCommonConfig } & Props>(),
+  {
+    collapsedRows: 1,
+    commonConfig: () => ({}),
+    globalCommonConfig: () => ({}),
+    showCollapseButton: false,
+    wrapperClass: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3',
+  },
+);
+>>>>>>> target
 
 const emits = defineEmits<{
   submit: [event: any];
@@ -77,6 +103,11 @@ const computedSchema = computed(
       componentProps = {},
       controlClass = '',
       disabled,
+<<<<<<< HEAD
+=======
+      disabledOnChangeListener = false,
+      emptyStateValue = undefined,
+>>>>>>> target
       formFieldProps = {},
       formItemClass = '',
       hideLabel = false,
@@ -84,7 +115,11 @@ const computedSchema = computed(
       labelClass = '',
       labelWidth = 100,
       wrapperClass = '',
+<<<<<<< HEAD
     } = props.commonConfig;
+=======
+    } = mergeWithArrayOverride(props.commonConfig, props.globalCommonConfig);
+>>>>>>> target
     return (props.schema || []).map((schema, index) => {
       const keepIndex = keepFormItemIndex.value;
 
@@ -96,6 +131,11 @@ const computedSchema = computed(
 
       return {
         disabled,
+<<<<<<< HEAD
+=======
+        disabledOnChangeListener,
+        emptyStateValue,
+>>>>>>> target
         hideLabel,
         hideRequiredMark,
         labelWidth,

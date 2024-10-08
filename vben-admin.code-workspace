@@ -5,8 +5,8 @@
       "path": "apps/backend-mock",
     },
     {
-      "name": "@vben/ls-attendance",
-      "path": "apps/ls-attendance",
+      "name": "@vben/web-antd",
+      "path": "apps/web-antd",
     },
     {
       "name": "@vben/web-ele",

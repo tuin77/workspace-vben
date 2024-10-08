@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 // 假设这个文件为 FormApi.ts
+=======
+>>>>>>> target
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { FormApi } from '../src/form-api';
 
+<<<<<<< HEAD
 vi.mock('@vben-core/shared/utils', () => ({
   bindMethods: vi.fn(),
   createMerge: vi.fn((mergeFn) => {
@@ -19,6 +23,8 @@ vi.mock('@vben-core/shared/utils', () => ({
   })),
 }));
 
+=======
+>>>>>>> target
 describe('formApi', () => {
   let formApi: FormApi;
 
@@ -126,9 +132,14 @@ describe('formApi', () => {
   });
 
   it('should unmount form and reset state', () => {
+<<<<<<< HEAD
     formApi.unmounted();
     expect(formApi.isMounted).toBe(false);
     expect(formApi.stateHandler.reset).toHaveBeenCalled();
+=======
+    formApi.unmount();
+    expect(formApi.isMounted).toBe(false);
+>>>>>>> target
   });
 
   it('should validate form', async () => {

@@ -54,7 +54,11 @@ describe('page.vue', () => {
       },
     });
 
+<<<<<<< HEAD
     const contentDiv = wrapper.find('.m-4');
+=======
+    const contentDiv = wrapper.find('.p-4');
+>>>>>>> target
     expect(contentDiv.classes()).toContain('custom-class');
   });
 

@@ -216,7 +216,11 @@ export function useElementPlusDesignTokens() {
           : getCssVariableValue('--destructive-50'),
 
         '--el-color-info-light-8': border,
+<<<<<<< HEAD
         '--el-color-info-light-9': background,
+=======
+        '--el-color-info-light-9': getCssVariableValue('--info'), // getCssVariableValue('--secondary'),
+>>>>>>> target
 
         '--el-color-primary': getCssVariableValue('--primary-500'),
         '--el-color-primary-dark-2': getCssVariableValue('--primary'),
@@ -258,6 +262,15 @@ export function useElementPlusDesignTokens() {
         '--el-fill-color-blank': background,
         '--el-fill-color-light': getCssVariableValue('--accent'),
         '--el-fill-color-lighter': getCssVariableValue('--accent-lighter'),
+<<<<<<< HEAD
+=======
+
+        // 解决ElLoading背景色问题
+        '--el-mask-color': isDark.value
+          ? 'rgba(0,0,0,.8)'
+          : 'rgba(255,255,255,.9)',
+
+>>>>>>> target
         '--el-text-color-primary': getCssVariableValue('--foreground'),
 
         '--el-text-color-regular': getCssVariableValue('--foreground'),

@@ -20,7 +20,10 @@ const tabbarPersist = defineModel<boolean>('tabbarPersist');
 const tabbarDragable = defineModel<boolean>('tabbarDragable');
 const tabbarStyleType = defineModel<string>('tabbarStyleType');
 const tabbarShowMore = defineModel<boolean>('tabbarShowMore');
+<<<<<<< HEAD
 const tabbarShowRefresh = defineModel<boolean>('tabbarShowRefresh');
+=======
+>>>>>>> target
 const tabbarShowMaximize = defineModel<boolean>('tabbarShowMaximize');
 
 const styleItems = computed((): SelectOption[] => [
@@ -60,9 +63,12 @@ const styleItems = computed((): SelectOption[] => [
   <SwitchItem v-model="tabbarShowMore" :disabled="!tabbarEnable">
     {{ $t('preferences.tabbar.showMore') }}
   </SwitchItem>
+<<<<<<< HEAD
   <SwitchItem v-model="tabbarShowRefresh" :disabled="!tabbarEnable">
     {{ $t('preferences.tabbar.showRefresh') }}
   </SwitchItem>
+=======
+>>>>>>> target
   <SwitchItem v-model="tabbarShowMaximize" :disabled="!tabbarEnable">
     {{ $t('preferences.tabbar.showMaximize') }}
   </SwitchItem>

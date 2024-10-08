@@ -16,6 +16,7 @@ export default defineBuildConfig({
       loaders: ['vue'],
       pattern: ['**/*.vue'],
     },
+<<<<<<< HEAD
     // {
     //   builder: 'mkdist',
     //   format: 'cjs',
@@ -23,6 +24,8 @@ export default defineBuildConfig({
     //   loaders: ['js'],
     //   pattern: ['**/*.ts'],
     // },
+=======
+>>>>>>> target
     {
       builder: 'mkdist',
       format: 'esm',

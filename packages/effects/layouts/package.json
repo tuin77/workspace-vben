@@ -20,6 +20,10 @@
     }
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@vben-core/composables": "workspace:*",
+>>>>>>> target
     "@vben-core/form-ui": "workspace:*",
     "@vben-core/layout-ui": "workspace:*",
     "@vben-core/menu-ui": "workspace:*",

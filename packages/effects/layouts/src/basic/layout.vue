@@ -3,14 +3,22 @@ import type { MenuRecordRaw } from '@vben/types';
 
 import { computed, useSlots, watch } from 'vue';
 
+<<<<<<< HEAD
 import { useWatermark } from '@vben/hooks';
+=======
+import { useRefresh } from '@vben/hooks';
+>>>>>>> target
 import { $t } from '@vben/locales';
 import {
   preferences,
   updatePreferences,
   usePreferences,
 } from '@vben/preferences';
+<<<<<<< HEAD
 import { useLockStore, useUserStore } from '@vben/stores';
+=======
+import { useLockStore } from '@vben/stores';
+>>>>>>> target
 import { deepToRaw, mapTree } from '@vben/utils';
 import { VbenAdminLayout } from '@vben-core/layout-ui';
 import { Toaster, VbenBackTop, VbenLogo } from '@vben-core/shadcn-ui';
@@ -44,9 +52,14 @@ const {
   sidebarCollapsed,
   theme,
 } = usePreferences();
+<<<<<<< HEAD
 const userStore = useUserStore();
 const { updateWatermark } = useWatermark();
 const lockStore = useLockStore();
+=======
+const lockStore = useLockStore();
+const { refresh } = useRefresh();
+>>>>>>> target
 
 const sidebarTheme = computed(() => {
   const dark = isDark.value || preferences.theme.semiDarkSidebar;
@@ -130,6 +143,7 @@ function clearPreferencesAndLogout() {
 }
 
 watch(
+<<<<<<< HEAD
   () => preferences.app.watermark,
   async (val) => {
     if (val) {
@@ -144,6 +158,8 @@ watch(
 );
 
 watch(
+=======
+>>>>>>> target
   () => preferences.app.layout,
   async (val) => {
     if (val === 'sidebar-mixed-nav' && preferences.sidebar.hidden) {
@@ -156,6 +172,12 @@ watch(
   },
 );
 
+<<<<<<< HEAD
+=======
+// 语言更新后，刷新页面
+watch(() => preferences.app.locale, refresh);
+
+>>>>>>> target
 const slots = useSlots();
 const headerSlots = computed(() => {
   return Object.keys(slots).filter((key) => key.startsWith('header-'));
@@ -267,7 +289,10 @@ const headerSlots = computed(() => {
       />
     </template>
     <template #mixed-menu>
+<<<<<<< HEAD
       <!-- :collapse="!preferences.sidebar.collapsedShowTitle" -->
+=======
+>>>>>>> target
       <LayoutMixedMenu
         :active-path="extraActiveMenu"
         :menus="wrapperMenus(headerMenus)"
@@ -308,19 +333,31 @@ const headerSlots = computed(() => {
     <template #content>
       <LayoutContent />
     </template>
+<<<<<<< HEAD
+=======
+
+>>>>>>> target
     <template v-if="preferences.transition.loading" #content-overlay>
       <LayoutContentSpinner />
     </template>
 
     <!-- 页脚 -->
+<<<<<<< HEAD
     <!-- <template v-if="preferences.footer.enable" #footer>
+=======
+    <template v-if="preferences.footer.enable" #footer>
+>>>>>>> target
       <LayoutFooter>
         <Copyright
           v-if="preferences.copyright.enable"
           v-bind="preferences.copyright"
         />
       </LayoutFooter>
+<<<<<<< HEAD
     </template> -->
+=======
+    </template>
+>>>>>>> target
 
     <template #extra>
       <slot name="extra"></slot>

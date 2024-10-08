@@ -4,7 +4,15 @@ import type { VbenLayoutProps } from './vben-layout';
 import type { CSSProperties } from 'vue';
 import { computed, ref, watch } from 'vue';
 
+<<<<<<< HEAD
 import { SCROLL_FIXED_CLASS } from '@vben-core/composables';
+=======
+import {
+  SCROLL_FIXED_CLASS,
+  useLayoutFooterStyle,
+  useLayoutHeaderStyle,
+} from '@vben-core/composables';
+>>>>>>> target
 import { Menu } from '@vben-core/icons';
 import { VbenIconButton } from '@vben-core/shadcn-ui';
 
@@ -74,6 +82,12 @@ const {
   y: scrollY,
 } = useScroll(document);
 
+<<<<<<< HEAD
+=======
+const { setLayoutHeaderHeight } = useLayoutHeaderStyle();
+const { setLayoutFooterHeight } = useLayoutFooterStyle();
+
+>>>>>>> target
 const { y: mouseY } = useMouse({ target: contentRef, type: 'client' });
 
 const {
@@ -356,6 +370,29 @@ watch(
   },
 );
 
+<<<<<<< HEAD
+=======
+watch(
+  [() => headerWrapperHeight.value, () => isFullContent.value],
+  ([height]) => {
+    setLayoutHeaderHeight(isFullContent.value ? 0 : height);
+  },
+  {
+    immediate: true,
+  },
+);
+
+watch(
+  () => props.footerHeight,
+  (height: number) => {
+    setLayoutFooterHeight(height);
+  },
+  {
+    immediate: true,
+  },
+);
+
+>>>>>>> target
 {
   const mouseMove = () => {
     mouseY.value > headerWrapperHeight.value
